@@ -1,8 +1,10 @@
 package com.lib.security.service;
 
+
 import com.lib.domain.User;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -11,23 +13,30 @@ import org.springframework.security.core.userdetails.UserDetails;
 import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
+
 @Getter
 @Setter
 @AllArgsConstructor
+@NoArgsConstructor
 public class UserDetailsImpl implements UserDetails {
+
     private String email;
     private String password;
 
     private Collection<? extends GrantedAuthority> authorities;
 
-    //user --> userdetails
-    public static UserDetailsImpl build(User user){
-        List<SimpleGrantedAuthority> authorities=user.getRoles().
-                stream().
-                map(role -> new SimpleGrantedAuthority(role.getRoleType().name())).collect(Collectors.toList());
-        return new UserDetailsImpl(user.getEmail(),user.getPassword(),authorities);
-    }
 
+    // User ---- >  UserDetails
+
+    public static UserDetailsImpl build(User user){
+
+        List<SimpleGrantedAuthority> authorities = user.getRoles().
+                stream().map(role -> new SimpleGrantedAuthority(role.getRoleType().name())).
+                                                    collect(Collectors.toList());
+
+        return new UserDetailsImpl(user.getEmail(), user.getPassword(), authorities);
+
+    }
 
 
     @Override
