@@ -3,17 +3,20 @@ package com.lib.service;
 import com.lib.domain.Role;
 import com.lib.domain.User;
 import com.lib.domain.enums.RoleType;
+import com.lib.dto.UserDTO;
 import com.lib.dto.request.RegisterRequest;
+import com.lib.dto.request.UserCreationRequest;
 import com.lib.exception.ConflictException;
 import com.lib.exception.ResourceNotFoundException;
 import com.lib.exception.message.ErrorMessage;
+import com.lib.mapper.UserMapper;
 import com.lib.repository.UserRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Service
@@ -23,12 +26,14 @@ public class UserService {
     private final UserRepository userRepository;
 
     private final RoleService roleService;
+    private final UserMapper userMapper;
 
     private final PasswordEncoder passwordEncoder;
 
-    public UserService(UserRepository userRepository, RoleService roleService,@Lazy PasswordEncoder passwordEncoder) {
+    public UserService(UserRepository userRepository, RoleService roleService, UserMapper userMapper, @Lazy PasswordEncoder passwordEncoder) {
         this.userRepository = userRepository;
         this.roleService = roleService;
+        this.userMapper = userMapper;
         this.passwordEncoder = passwordEncoder;
     }
 
@@ -67,6 +72,22 @@ public class UserService {
         user.setRoles(roles);
 
         userRepository.save(user);
+
+
+    }
+
+    public List<UserDTO> getAllUser() {
+
+        List<User> userList=userRepository.findAll();
+
+        return userMapper.userListToUserDtoList(userList);
+    }
+
+    public void createUser(UserCreationRequest userRequest) {
+        Boolean existEmail=userRepository.existsByEmail(userRequest.getEmail());
+        if (existEmail){
+            throw new ConflictException(String.format(ErrorMessage.EMAIL_ALREADY_EXIST_MESSAGE));
+        }
 
 
     }
