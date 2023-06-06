@@ -11,7 +11,10 @@ import com.lib.exception.ResourceNotFoundException;
 import com.lib.exception.message.ErrorMessage;
 import com.lib.mapper.UserMapper;
 import com.lib.repository.UserRepository;
+import com.lib.security.SecurityUtils;
 import org.springframework.context.annotation.Lazy;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -83,12 +86,62 @@ public class UserService {
         return userMapper.userListToUserDtoList(userList);
     }
 
-    public void createUser(UserCreationRequest userRequest) {
-        Boolean existEmail=userRepository.existsByEmail(userRequest.getEmail());
+    public void createUser(UserCreationRequest userCreationRequest) {
+        Boolean existEmail=userRepository.existsByEmail(userCreationRequest.getEmail());
+
         if (existEmail){
             throw new ConflictException(String.format(ErrorMessage.EMAIL_ALREADY_EXIST_MESSAGE));
         }
 
+        Role role=roleService.findByType(RoleType.ROLE_MEMBER);
+        Set<Role> roles=new HashSet<>();
+        roles.add(role);
+
+        String password= userCreationRequest.getPassword();
+        String encodedPassword= passwordEncoder.encode(password);
+
+        User user=new User();
+        user.setFirstName(userCreationRequest.getFirstName());
+        user.setLastName(userCreationRequest.getLastName());
+        user.setAddress(userCreationRequest.getAddress());
+        user.setPhone(userCreationRequest.getPhone());
+        user.setBirthDate(userCreationRequest.getBirthDate());
+        user.setEmail(userCreationRequest.getEmail());
+        user.setPassword(encodedPassword);
+        user.setResetPasswordCode(userCreationRequest.getResetPasswordCode());
+        user.setRoles(roles);
+
+        userRepository.save(user);
+
+
+    }
+
+    public UserDTO getPrincipal() {
+        User user=getCurrentUser();
+        UserDTO userDTO=userMapper.userToUserDTO(user);
+        return userDTO;
+    }
+
+    private User getCurrentUser(){
+        String email=SecurityUtils.getCurrentUserLogin().orElseThrow(() ->
+                new ResourceNotFoundException(ErrorMessage.PRINCIPAL_FOUND_MESSAGE));
+        User user =getUserByEmail(email);
+        return user;
+    }
+
+    public UserDTO getUserById(Long id) {
+        User user=userRepository.findUserById(id).orElseThrow(()->
+                new ResourceNotFoundException(ErrorMessage.USER_NOT_FOUND_EXCEPTION));
+        UserDTO userDTO=userMapper.userToUserDTO(user);
+        return userDTO;
+    }
+
+    public Page<UserDTO> getAllUserWithPAge(Pageable pageable) {
+       Page<User> userPage= userRepository.findAll(pageable);
+       return getUserPage(userPage);
+    }
+    private Page<UserDTO> getUserPage(Page<User> userPage){
+        return userPage.map(user -> userMapper.userToUserDTO(user));
 
     }
 }

@@ -1,5 +1,6 @@
 package com.lib.dto.request;
 
+import com.lib.domain.Role;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -10,6 +11,7 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 import java.time.LocalDate;
+import java.util.HashSet;
 import java.util.Set;
 
 @Getter
@@ -46,5 +48,13 @@ public class UserCreationRequest {
 
     @NotNull(message = "password cannot be null")
     private String resetPasswordCode;
-    private Set<String> roles ;
+    private Set<String> roles=new HashSet<>();
+
+    public void setRoles(Set<Role> roles){
+        Set<String> roleStr=new HashSet<>();
+        roles.forEach(r->{
+            roleStr.add(r.getRoleType().getName());//Employee,Admınıstrator,member
+        });
+        this.roles=roleStr;
+    }
 }
