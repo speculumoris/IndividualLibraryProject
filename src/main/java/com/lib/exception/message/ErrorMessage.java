@@ -15,6 +15,7 @@ public class ErrorMessage {
 
     public final static String PASSWORD_NOT_FOUNT_EXCEPTION = "Your password could not be verified";
     public final static String RESOURSE_NOT_FOUND_EXCEPTION = "User with email : %s not found";
+    public final static String PASSWORD_NOT_MATCHED_MESSAGE = "Old password not correct";
 
     public final static String USER_NOT_FOUND_EXCEPTION = "User with id : %s not found";
     public final static String CATEGORY_NOT_FOUNT_EXCEPTION = "Category with id : %s not found";

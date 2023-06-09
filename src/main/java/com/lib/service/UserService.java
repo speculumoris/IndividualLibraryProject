@@ -4,20 +4,25 @@ import com.lib.domain.Role;
 import com.lib.domain.User;
 import com.lib.domain.enums.RoleType;
 import com.lib.dto.UserDTO;
+import com.lib.dto.request.AdminUserUpdateRequest;
 import com.lib.dto.request.RegisterRequest;
+import com.lib.dto.request.UpdatePasswordRequest;
 import com.lib.dto.request.UserCreationRequest;
+import com.lib.exception.BadRequestException;
 import com.lib.exception.ConflictException;
 import com.lib.exception.ResourceNotFoundException;
 import com.lib.exception.message.ErrorMessage;
 import com.lib.mapper.UserMapper;
 import com.lib.repository.UserRepository;
 import com.lib.security.SecurityUtils;
+import net.bytebuddy.implementation.bytecode.Throw;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -142,6 +147,64 @@ public class UserService {
     }
     private Page<UserDTO> getUserPage(Page<User> userPage){
         return userPage.map(user -> userMapper.userToUserDTO(user));
+
+    }
+
+    public void updatePassword(UpdatePasswordRequest updatePasswordRequest){
+       User user= getCurrentUser();
+
+       if (user.isBuiltIn()){
+           throw new BadRequestException(ErrorMessage.NOT_PERMITTED_METHOD_MESSAGE);
+       }
+       if (!passwordEncoder.matches(updatePasswordRequest.getOldPassword(), user.getPassword())){
+           throw new BadRequestException(ErrorMessage.PASSWORD_NOT_MATCHED_MESSAGE);
+
+       }
+       String encodedPassword=passwordEncoder.encode(updatePasswordRequest.getNewPassword());
+       user.setPassword(encodedPassword);
+
+       userRepository.save(user);
+    }
+
+    public void deleteUserById(Long id){
+        User user =findUserById(id);
+
+        if (user.isBuiltIn()){
+            throw new BadRequestException(ErrorMessage.NOT_PERMITTED_METHOD_MESSAGE);
+        }
+        userRepository.deleteById(id);
+
+    }
+
+    public User findUserById(Long id){
+       User user= userRepository.findById(id).
+               orElseThrow(() ->
+                new ResourceNotFoundException(String.format(ErrorMessage.RESOURSE_NOT_FOUND_EXCEPTION,id)));
+        return user;
+    }
+
+    @Transactional
+    public void updateUserByAdmin(Long id, AdminUserUpdateRequest adminUserUpdateRequest) {
+        User user =getCurrentUser();
+
+        if (user.isBuiltIn()){
+            throw new BadRequestException(ErrorMessage.NOT_PERMITTED_METHOD_MESSAGE);
+        }
+
+       Boolean existEmail= userRepository.existsByEmail(adminUserUpdateRequest.getEmail());
+        if (existEmail & !adminUserUpdateRequest.getEmail().equals(user.getEmail())){
+            throw new ConflictException(ErrorMessage.EMAIL_ALREADY_EXIST_MESSAGE);
+        }
+        userRepository.update(user.getId(),
+                adminUserUpdateRequest.getFirstName(),
+                adminUserUpdateRequest.getLastName(),
+                adminUserUpdateRequest.getAddress(),
+                adminUserUpdateRequest.getPhone(),
+                adminUserUpdateRequest.getBirthDate(),
+                adminUserUpdateRequest.getEmail(),
+                adminUserUpdateRequest.getResetPasswordCode());
+
+
 
     }
 }

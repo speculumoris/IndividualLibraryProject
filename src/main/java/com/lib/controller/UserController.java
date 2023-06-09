@@ -1,6 +1,7 @@
 package com.lib.controller;
 
 import com.lib.dto.UserDTO;
+import com.lib.dto.request.AdminUserUpdateRequest;
 import com.lib.dto.request.UpdatePasswordRequest;
 import com.lib.dto.request.UserCreationRequest;
 import com.lib.dto.response.LibResponse;
@@ -53,7 +54,7 @@ public class UserController {
         LibResponse libResponse=new LibResponse(ResponseMessage.USER_CREATED_RESPONSE_MESSAGE,true);
         return new ResponseEntity<>(libResponse, HttpStatus.CREATED);
     }
-    @GetMapping
+    @GetMapping("/user")
     @PreAuthorize("hasRole('ADMIN') or hasRole('EMPLOYEE')")
     public ResponseEntity<UserDTO> getUser(){
         UserDTO userDTO=userService.getPrincipal();
@@ -68,9 +69,9 @@ public class UserController {
 
     }
 
-    @GetMapping("/users/page")
+    @GetMapping
     @PreAuthorize("hasRole('ADMIN') or hasRole('EMPLOYEE')")
-    public ResponseEntity<Page<UserDTO>> getAllUserByPage(@RequestParam("Page") int page,
+    public ResponseEntity<Page<UserDTO>> getAllUserByPage(@RequestParam("page") int page,
                                                           @RequestParam("size")int size,
                                                           @RequestParam("sort") String prop,
                                                           @RequestParam(value = "direction",
@@ -85,7 +86,7 @@ public class UserController {
     }
 
 
-    @PatchMapping("/user/update/password")
+    @PatchMapping("/reset/password")
     @PreAuthorize("hasRole('ADMIN') or hasRole('EMPLOYEE') or hasRole('MEMBER')")
     public ResponseEntity<LibResponse> updatePassword(@Valid @RequestBody
                                                           UpdatePasswordRequest updatePasswordRequest){
@@ -95,6 +96,26 @@ public class UserController {
         return ResponseEntity.ok(libResponse);
     }
 
+    @PutMapping("/users/{id}")
+    @PreAuthorize("hasRole('ADMIN') or hasRole('EMPLOYEE') ")
+    public ResponseEntity<LibResponse> updateUserByAdmın( @PathVariable Long id,
+                                                                     @Valid @RequestBody AdminUserUpdateRequest adminUserUpdateRequest){
+        userService.updateUserByAdmin(id,adminUserUpdateRequest);
+        LibResponse libResponse=new LibResponse(ResponseMessage.USER_UPDATED_RESPONSE_MESSAGE,true);
+
+        return ResponseEntity.ok(libResponse);
+    }
+
+
+    @DeleteMapping("/{id}")
+    @PreAuthorize("hasRole('ADMIN') or hasRole('EMPLOYEE') or hasRole('MEMBER')")
+    public ResponseEntity<LibResponse> deleteUser(@PathVariable  Long id){
+        userService.deleteUserById(id);
+
+        LibResponse libResponse=new LibResponse(ResponseMessage.USER_DELETE_RESPONSE_MESSAGE,true);
+
+        return ResponseEntity.ok(libResponse);
+    }
 
 
 
