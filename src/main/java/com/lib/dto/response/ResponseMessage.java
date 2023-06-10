@@ -8,5 +8,7 @@ public class ResponseMessage {
     public final static String USER_DELETE_RESPONSE_MESSAGE="User successfully deleted";
 
     public static final String USER_UPDATED_RESPONSE_MESSAGE = "User successfully updated";
+    public static final String IMAGE_SAVED_RESPONSE_MESSAGE = "Image successfully saved";
 
+    public static final String IMAGE_DELETED_RESPONSE_MESSAGE = "Image successfully deleted";
 }
