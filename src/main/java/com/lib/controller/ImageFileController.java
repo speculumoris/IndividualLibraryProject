@@ -30,13 +30,16 @@ public class ImageFileController {
 
     @PostMapping("/upload")
     @PreAuthorize("hasRole('ADMIN')")
-    public ResponseEntity<ImageSavedResponse> saveImage(@RequestParam("file") MultipartFile file) {
+    public ResponseEntity<ImageSavedResponse> uploadFile(
+            @RequestParam("file") MultipartFile file){
 
         String imageId = imageFileService.saveImage(file);
 
-        ImageSavedResponse response = new ImageSavedResponse(ResponseMessage.IMAGE_SAVED_RESPONSE_MESSAGE, true, imageId);
-
+        ImageSavedResponse response =
+                new ImageSavedResponse(
+                        imageId,ResponseMessage.IMAGE_SAVED_RESPONSE_MESSAGE,true);
         return ResponseEntity.ok(response);
+
     }
 
     @GetMapping("/download")
@@ -49,7 +52,7 @@ public class ImageFileController {
                 body(imageFile.getImageData().getData());
     }
 
-    @GetMapping("ımagefile/{imagefile}")
+    @GetMapping("/imagefile/{imagefile}")
     public ResponseEntity<byte[]> getImageById(@PathVariable String id) {
         ImageFile imageFile = imageFileService.getImageById(id);
 

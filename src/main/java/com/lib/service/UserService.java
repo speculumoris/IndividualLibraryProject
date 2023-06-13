@@ -15,7 +15,6 @@ import com.lib.exception.message.ErrorMessage;
 import com.lib.mapper.UserMapper;
 import com.lib.repository.UserRepository;
 import com.lib.security.SecurityUtils;
-import net.bytebuddy.implementation.bytecode.Throw;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -179,7 +178,7 @@ public class UserService {
     public User findUserById(Long id){
        User user= userRepository.findById(id).
                orElseThrow(() ->
-                new ResourceNotFoundException(String.format(ErrorMessage.RESOURSE_NOT_FOUND_EXCEPTION,id)));
+                new ResourceNotFoundException(String.format(ErrorMessage.RESOURCE_NOT_FOUND_EXCEPTION,id)));
         return user;
     }
 
