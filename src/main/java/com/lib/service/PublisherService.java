@@ -15,6 +15,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class PublisherService {
@@ -30,48 +31,36 @@ public class PublisherService {
 
 
     public Page<PublisherDTO> getAllPublisherByPage(Pageable pageable) {
-        Page<Publisher> publishers = publisherRepository.findAll(pageable);
+        Page<Publisher> publisherPage = publisherRepository.findAll(pageable);
 
-        return publishers.map(publisher -> publisherMapper.publisherToDTO(publisher));
+        return publisherPage.map(publisher -> publisherMapper.publisherToDTO(publisher));
+
     }
 
-    public List<PublisherDTO> getAllPublisher() {
-        List<Publisher> publishers = publisherRepository.findAll();
-        return publisherMapper.publisherMap(publishers);
+    public List<PublisherDTO> getAllPublisher(){
+       return publisherRepository.findAll().
+               stream().
+               map(this::publisherToPublisherDTO).
+               collect(Collectors.toList());
+
+
+
     }
 
-    public PublisherDTO getPublishersById(Long id) {
-        Publisher publisher = publisherRepository.findById(id).orElseThrow(
-                () -> new ResourceNotFoundException(String.format(ErrorMessage.PUBLISHER_NOT_FOUND_EXCEPTION, id)));
+    private PublisherDTO publisherToPublisherDTO(Publisher publisher){
+        return PublisherDTO.builder()
+                .name(publisher.getName())
+                .builtIn(publisher.getBuiltIn())
+                .build();
+    }
+
+
+    public PublisherDTO findPublisherById(Long id) {
+        Publisher publisher=publisherRepository.findById(id).orElseThrow(()->
+                new ResourceNotFoundException(String.format(ErrorMessage.PUBLISHER_NOT_FOUND_EXCEPTION,id)));
         return publisherMapper.publisherToDTO(publisher);
     }
 
-
-
-    public void updatePublisher(Long id, UpdatePublisherRequest updatePublisherRequest) {
-        Publisher publisher = getPublisherById(id);
-
-        if (publisher.getBuiltIn()) {
-            throw new BadRequestException(ErrorMessage.NOT_PERMITTED_METHOD_MESSAGE);
-        }
-        publisher.setName(updatePublisherRequest.getName());
-        publisher.setBuiltIn(updatePublisherRequest.isBuiltIn());
-        publisherRepository.save(publisher);
-    }
-
-    private Publisher getPublisherById(Long id) {
-        return publisherRepository.findPublisherById(id).orElseThrow
-                (() -> new ResourceNotFoundException(String.format(ErrorMessage.PUBLISHER_NOT_FOUND_EXCEPTION, id)));
-    }
-
-    public void deletePublisherById(Long id) {
-        Publisher publisher = getPublisherById(id);
-
-        if (publisher.getBuiltIn()) {
-            throw new BadRequestException(ErrorMessage.NOT_PERMITTED_METHOD_MESSAGE);
-        }
-        publisherRepository.delete(publisher);
-    }
 
     public void savePublisher(PublisherRequest publisherRequest) {
         Publisher publisher=new Publisher();
@@ -79,6 +68,35 @@ public class PublisherService {
         publisher.setName(publisherRequest.getName());
 
         publisherRepository.save(publisher);
+    }
+
+
+    public void updatePublisher(Long id,UpdatePublisherRequest updatePublisherRequest) {
+        Publisher publisher=getPublisher(id);
+
+        if (publisher.getBuiltIn()){
+            throw new BadRequestException(ErrorMessage.NOT_PERMITTED_METHOD_MESSAGE);
+        }
+        publisher.setName(updatePublisherRequest.getName());
+        publisher.setBuiltIn(updatePublisherRequest.isBuiltIn());
+
+        publisherRepository.save(publisher);
+    }
+
+
+
+    private Publisher getPublisher(Long id) {
+        return publisherRepository.findPublisherById(id).orElseThrow(()->
+                new ResourceNotFoundException(String.format(ErrorMessage.PUBLISHER_NOT_FOUND_EXCEPTION,id)));
+    }
+
+    public void removePublisher(Long id) {
+        Publisher publisher=getPublisher(id);
+
+        if (publisher.getBuiltIn()){
+            throw new BadRequestException(ErrorMessage.NOT_PERMITTED_METHOD_MESSAGE);
+        }
+        publisherRepository.delete(publisher);
 
     }
 }

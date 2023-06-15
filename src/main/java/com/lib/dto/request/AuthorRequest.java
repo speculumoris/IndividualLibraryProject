@@ -16,7 +16,7 @@ import javax.validation.constraints.Size;
 public class AuthorRequest {
 
     @NotNull(message = "please provide a name")
-    @Size(min = 4, max = 70, message = "Author name '${validateValue}' should be between {min} and {max}")
+    @Size(min = 4, max = 70, message = "Author name '${validatedValue}' should be between {min} and {max}")
     private String name;
 
 }

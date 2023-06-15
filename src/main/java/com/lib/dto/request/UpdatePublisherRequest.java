@@ -14,7 +14,7 @@ import javax.validation.constraints.Size;
 public class UpdatePublisherRequest {
 
     @NotNull(message = "Publisher name can not be null")
-    @Size(min = 4,max = 70,message = "Publisher name '${validateValue}' should be between {min} and {max}")
+    @Size(min = 4,max = 70,message = "Publisher name '${validatedValue}' should be between {min} and {max}")
     private String name;
 
     @NotNull

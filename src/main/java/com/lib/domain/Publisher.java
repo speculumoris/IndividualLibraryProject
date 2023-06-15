@@ -1,24 +1,23 @@
 package com.lib.domain;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+
+import lombok.*;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
+
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-import java.util.List;
 
-@Getter
-@Setter
-@AllArgsConstructor
-@NoArgsConstructor
 
 @Entity
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@Setter
+
 @Table(name = "t_publisher")
+@Builder(toBuilder = true)
 public class Publisher {
 
 
@@ -31,9 +30,8 @@ public class Publisher {
     @Size(min = 2, max = 25, message = "publisher '${validatedValue}' must be between {min} and {max} long")
     private String name;
 
+    @NotNull
     private Boolean builtIn = false;
-
-
 
 
 
