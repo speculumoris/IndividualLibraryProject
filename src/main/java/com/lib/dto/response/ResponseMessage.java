@@ -14,4 +14,7 @@ public class ResponseMessage {
     public static final String CATEGORY_CREATED_RESPONSE_MESSAGE = "Category successfully created";
     public static final String CATEGORY_UPDATED_RESPONSE_MESSAGE = "Category successfully updated";
     public static final String CATEGORY_DELETED_RESPONSE_MESSAGE = "Category successfully deleted";
+    public static final String AUTHOR_CREATED_RESPONSE_MESSAGE = "Author successfully created";
+    public static final String AUTHOR_UPDATED_RESPONSE_MESSAGE = "Author successfully updated";
+    public static final String AUTHOR_DELETED_RESPONSE_MESSAGE = "Author successfully deleted";
 }

@@ -25,8 +25,7 @@ public class Author {
     @NotNull
     private boolean builtIn =false;
 
-    @OneToMany(mappedBy = "author")
-    private List<Book> bookList;
+
 
 
 }

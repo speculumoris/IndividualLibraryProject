@@ -16,6 +16,7 @@ public class ErrorMessage {
     public final static String PASSWORD_NOT_FOUND_EXCEPTION = "Your password could not be verified";
     public final static String RESOURCE_NOT_FOUND_EXCEPTION = "User with email : %s not found";
     public final static String BOOK_NOT_FOUND_EXCEPTION = "Book with id : %s not found";
+    public final static String AUTHOR_NOT_FOUND_EXCEPTION = "Author with id : %s not found";
     public final static String PASSWORD_NOT_MATCHED_MESSAGE = "Old password not correct";
     public final static String SEQUENCE_CONFLICT_MESSAGE = "This Sequence number is already used.";
 

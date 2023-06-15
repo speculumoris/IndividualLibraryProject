@@ -4,6 +4,7 @@ import com.lib.domain.Category;
 import com.lib.dto.CategoryDTO;
 import com.lib.dto.request.CategoryRequest;
 import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
 
 import java.util.List;
 
@@ -12,8 +13,9 @@ public interface CategoryMapper {
 
     CategoryDTO catToCatDTO(Category category);
 
+
     List<CategoryDTO> mapCategory(List<Category> categoryList);
 
-    Category categoryToRequest(CategoryRequest creationCategoryRequest);
+
 
 }

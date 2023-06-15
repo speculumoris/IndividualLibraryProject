@@ -2,6 +2,7 @@ package com.lib.controller;
 
 import com.lib.dto.CategoryDTO;
 import com.lib.dto.request.CategoryRequest;
+import com.lib.dto.request.UpdateCategoryRequest;
 import com.lib.dto.response.LibResponse;
 import com.lib.dto.response.ResponseMessage;
 import com.lib.service.CategoryService;
@@ -72,7 +73,7 @@ public class CategoryController {
     @PutMapping("/{id}")
     @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<LibResponse> updateCategory(@PathVariable Long id,
-                                                      @Valid @RequestBody CategoryRequest categoryRequest){
+                                                      @Valid @RequestBody UpdateCategoryRequest categoryRequest){
         categoryService.updateCategory(id,categoryRequest);
 
         LibResponse libResponse=new LibResponse(ResponseMessage.CATEGORY_UPDATED_RESPONSE_MESSAGE,true);

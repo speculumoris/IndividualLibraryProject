@@ -3,6 +3,7 @@ package com.lib.service;
 import com.lib.domain.Category;
 import com.lib.dto.CategoryDTO;
 import com.lib.dto.request.CategoryRequest;
+import com.lib.dto.request.UpdateCategoryRequest;
 import com.lib.exception.BadRequestException;
 import com.lib.exception.ConflictException;
 import com.lib.exception.ResourceNotFoundException;
@@ -48,13 +49,12 @@ public class CategoryService {
         }
         Category category=new Category();
         category.setName(categoryRequest.getName());
-        category.setBuiltIn(categoryRequest.getBuiltIn());
         category.setSequence(categoryRequest.getSequence());
 
         categoryRepository.save(category);
     }
 
-    public void updateCategory(Long id, CategoryRequest categoryRequest) {
+    public void updateCategory(Long id, UpdateCategoryRequest categoryRequest) {
         Category category=findCategoryById(id);
 
         if (category.isBuiltIn()){

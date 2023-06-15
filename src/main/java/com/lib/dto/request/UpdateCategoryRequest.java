@@ -13,14 +13,15 @@ import javax.validation.constraints.Size;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-
-public class CategoryRequest {
+public class UpdateCategoryRequest {
 
     @NotBlank(message = "please provide a name")
     @Size(min = 4,max = 80,message = "Author name '${validateValue}' should be between {min} and {max}")
     private String name;
 
     @NotNull
-    private int sequence;
+    private Boolean builtIn;
 
+    @NotNull
+    private int sequence;
 }
