@@ -16,6 +16,7 @@ import java.util.List;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+
 @Entity
 @Table(name = "t_publisher")
 public class Publisher {
@@ -25,16 +26,14 @@ public class Publisher {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotNull(message = "name can not be null")
-    @NotBlank(message = "name can not be white spase")
-    @Size(min = 2, max = 25, message = "Name '${validatedValue}' must be between {min} and {max} long")
+
+    @NotBlank(message = "please provide publisher name")
+    @Size(min = 2, max = 25, message = "publisher '${validatedValue}' must be between {min} and {max} long")
     private String name;
 
     private Boolean builtIn = false;
 
-    @JsonIgnore
-    @OneToMany
-    private List<Book> bookList;
+
 
 
 

@@ -1,6 +1,7 @@
 package com.lib.service;
 
 import com.lib.domain.Author;
+import com.lib.domain.Publisher;
 import com.lib.dto.AuthorDTO;
 import com.lib.dto.request.AuthorRequest;
 import com.lib.dto.request.UpdateAuthorRequest;
@@ -12,6 +13,8 @@ import com.lib.repository.AuthorRepository;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class AuthorService {
@@ -73,5 +76,10 @@ public class AuthorService {
         }
         authorRepository.delete(author);
 
+    }
+
+    public List<AuthorDTO> getAllAuthor() {
+        List<Author> authors = authorRepository.findAll();
+        return authorMapper.authorMap(authors);
     }
 }

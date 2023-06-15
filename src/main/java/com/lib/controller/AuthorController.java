@@ -1,6 +1,7 @@
 package com.lib.controller;
 
 import com.lib.dto.AuthorDTO;
+import com.lib.dto.PublisherDTO;
 import com.lib.dto.request.AuthorRequest;
 import com.lib.dto.request.UpdateAuthorRequest;
 import com.lib.dto.response.LibResponse;
@@ -16,6 +17,7 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.List;
 
 @RestController
 @RequestMapping("/authors")
@@ -40,6 +42,11 @@ public class AuthorController {
         Page<AuthorDTO> allAuthByPage =authorService.getAllAuthByPage(pageable);
 
         return ResponseEntity.ok(allAuthByPage);
+    }
+    @GetMapping
+    public ResponseEntity<List<AuthorDTO>> getAllPublisher(){
+        List<AuthorDTO>authorDTOS= authorService.getAllAuthor();
+        return  ResponseEntity.ok(authorDTOS);
     }
     @GetMapping("/anonymous/{id}")
     public ResponseEntity<AuthorDTO> getAuthorById(@PathVariable Long id){

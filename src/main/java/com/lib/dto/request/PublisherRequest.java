@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
@@ -13,10 +14,11 @@ import javax.validation.constraints.Size;
 @AllArgsConstructor
 @NoArgsConstructor
 
-public class AuthorRequest {
+public class PublisherRequest {
 
-    @NotNull(message = "please provide a name")
-    @Size(min = 4, max = 70, message = "Author name '${validateValue}' should be between {min} and {max}")
+    @NotBlank(message = "please provide a name")
+    @Size(min = 4,max = 50,message = "Publisher name '${validatedValue}' should be between {min} and {max}")
     private String name;
+
 
 }

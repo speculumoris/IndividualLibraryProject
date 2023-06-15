@@ -13,6 +13,8 @@ import java.util.List;
 @NoArgsConstructor
 @Getter
 @Setter
+
+@Table(name = "t_author")
 public class Author {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

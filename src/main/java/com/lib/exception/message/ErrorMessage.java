@@ -33,4 +33,5 @@ public class ErrorMessage {
     public final static String NOT_DELETED_METHOD_MESSAGE = "The book cannot be deleted as it is not returned by the member. ";
 
 
+    public static final String PUBLISHER_NOT_FOUND_EXCEPTION = "Publisher with id : %s not found";
 }

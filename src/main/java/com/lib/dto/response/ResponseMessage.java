@@ -17,4 +17,7 @@ public class ResponseMessage {
     public static final String AUTHOR_CREATED_RESPONSE_MESSAGE = "Author successfully created";
     public static final String AUTHOR_UPDATED_RESPONSE_MESSAGE = "Author successfully updated";
     public static final String AUTHOR_DELETED_RESPONSE_MESSAGE = "Author successfully deleted";
+    public static final String PUBLISHER_CREATED_RESPONSE_MESSAGE ="Publisher successfully created" ;
+    public static final String PUBLISHER_UPDATED_RESPONSE_MESSAGE ="Publisher successfully updated" ;
+    public static final String PUBLISHER_DELETED_RESPONSE_MESSAGE ="Publisher successfully deleted" ;
 }
