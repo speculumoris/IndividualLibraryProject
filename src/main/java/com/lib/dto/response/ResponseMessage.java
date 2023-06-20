@@ -21,4 +21,6 @@ public class ResponseMessage {
     public static final String PUBLISHER_UPDATED_RESPONSE_MESSAGE ="Publisher successfully updated" ;
     public static final String PUBLISHER_DELETED_RESPONSE_MESSAGE ="Publisher successfully deleted" ;
     public static final String BOOK_CREATED_RESPONSE_MESSAGE = "Book successfully created" ;
+    public static final String BOOK_UPDATED_RESPONSE_MESSAGE = "Book successfully updated";
+    public static final String BOOK_DELETED_RESPONSE_MESSAGE = "Book successfully deleted";
 }

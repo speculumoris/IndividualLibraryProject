@@ -1,6 +1,7 @@
 package com.lib.controller;
 
 import com.lib.dto.BookDTO;
+import com.lib.dto.request.BookUpdateRequest;
 import com.lib.dto.request.SaveBookRequest;
 import com.lib.dto.response.LibResponse;
 import com.lib.dto.response.ResponseMessage;
@@ -43,10 +44,7 @@ public class BookController {
     }
 
     @GetMapping("/visitors")
-    public ResponseEntity<Page<BookDTO>> allBookByPage(@RequestParam("q") String q,
-                                                       @RequestParam("cat")Long catId,
-                                                       @RequestParam("author")Long authorId,
-                                                       @RequestParam("publisher") Long publisherId,
+    public ResponseEntity<Page<BookDTO>> allBookByPage(
                                                        @RequestParam("page") int page ,
                                                        @RequestParam("size") int size,
                                                        @RequestParam("sort") String prop,
@@ -54,9 +52,7 @@ public class BookController {
                                                                     required=false,
                                                                     defaultValue = "DESC") Sort.Direction direction) {
 
-        if (q==null && catId==null&& authorId==null &&publisherId==null){
-            throw new NullPointerException(ErrorMessage.QUERY_NULL_EXCEPTION);
-        }
+
 
         Pageable pageable=PageRequest.of(page,size,Sort.by(direction,prop));
 
@@ -82,6 +78,27 @@ public class BookController {
 
         return new ResponseEntity<>(libResponse, HttpStatus.CREATED);
     }
+
+    @PutMapping("/auth/upd")
+    @PreAuthorize("hasRole('ADMIN')")
+    public ResponseEntity<LibResponse> updateBook(@RequestParam("id") Long id,
+                                                  @RequestParam("imageId") String imageId,
+                                                  @Valid @RequestBody BookUpdateRequest bookUpdateRequest){
+        bookService.updateBook(id,imageId,bookUpdateRequest);
+        LibResponse libResponse=new LibResponse(ResponseMessage.BOOK_UPDATED_RESPONSE_MESSAGE,true);
+        return ResponseEntity.ok(libResponse);
+    }
+
+    @DeleteMapping("/{id}")
+    @PreAuthorize("hasRole('ADMIN')")
+    public ResponseEntity<LibResponse> deleteBook(@PathVariable Long id){
+        bookService.deleteBook(id);
+        LibResponse libResponse=new LibResponse(ResponseMessage.BOOK_DELETED_RESPONSE_MESSAGE,true);
+        return ResponseEntity.ok(libResponse);
+    }
+
+
+
 
 
 }
