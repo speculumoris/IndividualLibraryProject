@@ -1,13 +1,11 @@
 package com.lib.domain;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Set;
@@ -18,6 +16,7 @@ import java.util.Set;
 @NoArgsConstructor
 @Entity
 @Table(name = "t_book")
+@Builder(toBuilder = true)
 public class Book {
 
     @Id
@@ -37,7 +36,6 @@ public class Book {
     private Integer pageCount;
 
 
-    @Pattern(regexp = "^\\d{4}$", message = "please enter : yyyy" )
     @Column(nullable = false)
     private Integer publishDate;
 
@@ -55,20 +53,24 @@ public class Book {
     private boolean active=true;
     private boolean featured=false;
     private boolean loanable=true;
-    @NotNull
-    private LocalDateTime createDate = LocalDateTime.now();
 
 
+
+    private LocalDateTime createDate ;
     private boolean builtIn =false;
-
     @ManyToOne
+    @JoinColumn(name = "category_id")
     private Category category;
 
     @ManyToOne
+    @JoinColumn(name = "publisher_id")
     private Publisher publisher;
 
     @ManyToOne
+    @JoinColumn(name = "author_id")
     private Author author;
+
+
 
 
 

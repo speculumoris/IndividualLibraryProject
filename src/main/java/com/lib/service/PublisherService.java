@@ -58,7 +58,9 @@ public class PublisherService {
     public PublisherDTO findPublisherById(Long id) {
         Publisher publisher=publisherRepository.findById(id).orElseThrow(()->
                 new ResourceNotFoundException(String.format(ErrorMessage.PUBLISHER_NOT_FOUND_EXCEPTION,id)));
-        return publisherMapper.publisherToDTO(publisher);
+        return PublisherDTO.builder()
+                .name(publisher.getName())
+                .build();
     }
 
 
@@ -85,7 +87,7 @@ public class PublisherService {
 
 
 
-    private Publisher getPublisher(Long id) {
+    public Publisher getPublisher(Long id) {
         return publisherRepository.findPublisherById(id).orElseThrow(()->
                 new ResourceNotFoundException(String.format(ErrorMessage.PUBLISHER_NOT_FOUND_EXCEPTION,id)));
     }

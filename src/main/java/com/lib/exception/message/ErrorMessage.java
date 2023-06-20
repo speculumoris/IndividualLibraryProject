@@ -11,7 +11,7 @@ public class ErrorMessage {
     public final static String BOOK_IS_NOT_LOANABLE_MESSAGE = "The book is close to loan";
     public final static String SCORE_IS_NOT_ENOUGH = "Your score does not between -2 and 2";
 
-    public final static String IMAGE_USED_MESSAGE = "ImageFile is used by another car";
+    public final static String IMAGE_USED_MESSAGE = "ImageFile is used by another Book";
 
     public final static String PASSWORD_NOT_FOUND_EXCEPTION = "Your password could not be verified";
     public final static String RESOURCE_NOT_FOUND_EXCEPTION = "User with email : %s not found";
@@ -34,4 +34,5 @@ public class ErrorMessage {
 
 
     public static final String PUBLISHER_NOT_FOUND_EXCEPTION = "Publisher with id : %s not found";
+    public static final String QUERY_NULL_EXCEPTION = "provide at least one field.";
 }

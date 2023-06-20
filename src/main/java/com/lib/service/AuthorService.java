@@ -61,7 +61,7 @@ public class AuthorService {
 
     }
 
-    private Author getAuthorById(Long id) {
+    public Author getAuthorById(Long id) {
 
         return authorRepository.findAuthorById(id).orElseThrow
                 (() -> new ResourceNotFoundException(String.format(ErrorMessage.AUTHOR_NOT_FOUND_EXCEPTION, id)));
@@ -82,4 +82,5 @@ public class AuthorService {
         List<Author> authors = authorRepository.findAll();
         return authorMapper.authorMap(authors);
     }
+
 }

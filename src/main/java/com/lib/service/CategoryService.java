@@ -76,7 +76,7 @@ public class CategoryService {
 
     }
 
-    private Category findCategoryById(Long id) {
+    public Category findCategoryById(Long id) {
        return categoryRepository.findById(id).orElseThrow(() ->
                 new ResourceNotFoundException(ErrorMessage.CATEGORY_NOT_FOUND_EXCEPTION));
     }

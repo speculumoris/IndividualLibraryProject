@@ -52,7 +52,7 @@ public class ImageFileController {
                 body(imageFile.getImageData().getData());
     }
 
-    @GetMapping("/imagefile/{imagefile}")
+    @GetMapping("/display/{id}")
     public ResponseEntity<byte[]> getImageById(@PathVariable String id) {
         ImageFile imageFile = imageFileService.getImageById(id);
 
