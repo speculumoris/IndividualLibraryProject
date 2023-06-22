@@ -43,4 +43,8 @@ public interface UserRepository extends JpaRepository<User, Long> {
                 @Param("birthDate") String birthDate,
                 @Param("email") String email,
                 @Param("resetPasswordCode") String resetPasswordCode);
+
+    @EntityGraph(attributePaths = "id")
+    Optional<User> findUserByIdd(Long userId);
+
 }

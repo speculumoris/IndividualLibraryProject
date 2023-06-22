@@ -126,7 +126,7 @@ public class UserService {
         return userDTO;
     }
 
-    private User getCurrentUser(){
+    public User getCurrentUser(){
         String email=SecurityUtils.getCurrentUserLogin().orElseThrow(() ->
                 new ResourceNotFoundException(ErrorMessage.PRINCIPAL_FOUND_MESSAGE));
         User user =getUserByEmail(email);
@@ -205,5 +205,12 @@ public class UserService {
 
 
 
+    }
+
+    public User getById(Long userId) {
+        User user= userRepository.findUserByIdd(userId).
+                orElseThrow(() ->
+                        new ResourceNotFoundException(String.format(ErrorMessage.RESOURCE_NOT_FOUND_EXCEPTION,userId)));
+        return user;
     }
 }

@@ -175,7 +175,7 @@ public class BookService {
 
     }
 
-    private Book getBook(Long id) {
+    public Book getBook(Long id) {
         return bookRepository.findBookById(id).orElseThrow(()->
                 new ResourceNotFoundException(String.format(ErrorMessage.BOOK_NOT_FOUND_EXCEPTION,id)));
     }
@@ -191,5 +191,9 @@ public class BookService {
 
         bookRepository.delete(book);
 
+    }
+
+    public void save(Book book) {
+         bookRepository.save(book);
     }
 }

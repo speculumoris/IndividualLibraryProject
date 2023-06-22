@@ -35,4 +35,5 @@ public class ErrorMessage {
 
     public static final String PUBLISHER_NOT_FOUND_EXCEPTION = "Publisher with id : %s not found";
     public static final String QUERY_NULL_EXCEPTION = "provide at least one field.";
+    public static final String BOOK_IS_NOT_HAVE_PERMISSON = "You do not have a permission to loan";
 }
