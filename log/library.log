@@ -1,93 +1,127 @@
-2023-06-21 11:15:03,300 INFO  [restartedMain] com.lib.LibgenApplication:Starting LibgenApplication using Java 18 on apples-MBP with PID 4825 (/Users/apple/IdeaProjects/Libgen/target/classes started by apple in /Users/apple/IdeaProjects/Libgen)
-2023-06-21 11:15:03,303 INFO  [restartedMain] com.lib.LibgenApplication:No active profile set, falling back to 1 default profile: "default"
-2023-06-21 11:15:03,345 INFO  [restartedMain] org.springframework.boot.devtools.env.DevToolsPropertyDefaultsPostProcessor:Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
-2023-06-21 11:15:03,346 INFO  [restartedMain] org.springframework.boot.devtools.env.DevToolsPropertyDefaultsPostProcessor:For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
-2023-06-21 11:15:03,909 INFO  [restartedMain] org.springframework.data.repository.config.RepositoryConfigurationDelegate:Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2023-06-21 11:15:03,953 INFO  [restartedMain] org.springframework.data.repository.config.RepositoryConfigurationDelegate:Finished Spring Data repository scanning in 40 ms. Found 7 JPA repository interfaces.
-2023-06-21 11:15:04,363 INFO  [restartedMain] org.springframework.boot.web.embedded.tomcat.TomcatWebServer:Tomcat initialized with port(s): 8080 (http)
-2023-06-21 11:15:04,370 INFO  [restartedMain] org.apache.catalina.core.StandardService:Starting service [Tomcat]
-2023-06-21 11:15:04,370 INFO  [restartedMain] org.apache.catalina.core.StandardEngine:Starting Servlet engine: [Apache Tomcat/9.0.71]
-2023-06-21 11:15:04,412 INFO  [restartedMain] org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/]:Initializing Spring embedded WebApplicationContext
-2023-06-21 11:15:04,412 INFO  [restartedMain] org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext:Root WebApplicationContext: initialization completed in 1066 ms
-2023-06-21 11:15:04,580 INFO  [restartedMain] org.hibernate.jpa.internal.util.LogHelper:HHH000204: Processing PersistenceUnitInfo [name: default]
-2023-06-21 11:15:04,624 INFO  [restartedMain] org.hibernate.Version:HHH000412: Hibernate ORM core version 5.6.14.Final
-2023-06-21 11:15:04,728 INFO  [restartedMain] org.hibernate.annotations.common.Version:HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
-2023-06-21 11:15:04,781 INFO  [restartedMain] com.zaxxer.hikari.HikariDataSource:HikariPool-1 - Starting...
-2023-06-21 11:15:04,900 INFO  [restartedMain] com.zaxxer.hikari.HikariDataSource:HikariPool-1 - Start completed.
-2023-06-21 11:15:04,912 INFO  [restartedMain] org.hibernate.dialect.Dialect:HHH000400: Using dialect: org.hibernate.dialect.PostgreSQLDialect
-2023-06-21 11:15:05,476 INFO  [restartedMain] org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator:HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
-2023-06-21 11:15:05,481 INFO  [restartedMain] org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean:Initialized JPA EntityManagerFactory for persistence unit 'default'
-2023-06-21 11:15:06,101 INFO  [restartedMain] org.springframework.security.web.DefaultSecurityFilterChain:Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@64c9ec05, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@57b699d4, org.springframework.security.web.context.SecurityContextPersistenceFilter@141611a4, org.springframework.security.web.header.HeaderWriterFilter@9742bef, org.springframework.security.web.authentication.logout.LogoutFilter@5a75b15c, com.lib.security.jwt.AuthTokenFilter@1132f44, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@6d8cf085, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@42c0ca16, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@6eb7dfa1, org.springframework.security.web.session.SessionManagementFilter@63d37d41, org.springframework.security.web.access.ExceptionTranslationFilter@3a20eaae, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@9274d6d]
-2023-06-21 11:15:06,131 WARN  [restartedMain] org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration:spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2023-06-21 11:15:06,554 INFO  [restartedMain] org.springframework.boot.devtools.autoconfigure.OptionalLiveReloadServer:LiveReload server is running on port 35729
-2023-06-21 11:15:06,558 INFO  [restartedMain] org.springframework.boot.actuate.endpoint.web.EndpointLinksResolver:Exposing 15 endpoint(s) beneath base path '/actuator'
-2023-06-21 11:15:06,611 INFO  [restartedMain] org.springframework.boot.web.embedded.tomcat.TomcatWebServer:Tomcat started on port(s): 8080 (http) with context path ''
-2023-06-21 11:15:06,626 INFO  [restartedMain] com.lib.LibgenApplication:Started LibgenApplication in 3.588 seconds (JVM running for 4.029)
-2023-06-21 11:15:06,849 INFO  [RMI TCP Connection(1)-192.168.1.112] org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/]:Initializing Spring DispatcherServlet 'dispatcherServlet'
-2023-06-21 11:16:24,278 WARN  [http-nio-8080-exec-2] org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver:Resolved [org.springframework.web.bind.MissingServletRequestParameterException: Required request parameter 'q' for method parameter type String is not present]
-2023-06-21 11:16:44,027 INFO  [SpringApplicationShutdownHook] org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean:Closing JPA EntityManagerFactory for persistence unit 'default'
-2023-06-21 11:16:44,031 INFO  [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource:HikariPool-1 - Shutdown initiated...
-2023-06-21 11:16:44,032 INFO  [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource:HikariPool-1 - Shutdown completed.
-2023-06-21 11:16:56,223 INFO  [restartedMain] com.lib.LibgenApplication:Starting LibgenApplication using Java 18 on apples-MBP with PID 4964 (/Users/apple/IdeaProjects/Libgen/target/classes started by apple in /Users/apple/IdeaProjects/Libgen)
-2023-06-21 11:16:56,224 INFO  [restartedMain] com.lib.LibgenApplication:No active profile set, falling back to 1 default profile: "default"
-2023-06-21 11:16:56,259 INFO  [restartedMain] org.springframework.boot.devtools.env.DevToolsPropertyDefaultsPostProcessor:Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
-2023-06-21 11:16:56,259 INFO  [restartedMain] org.springframework.boot.devtools.env.DevToolsPropertyDefaultsPostProcessor:For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
-2023-06-21 11:16:56,800 INFO  [restartedMain] org.springframework.data.repository.config.RepositoryConfigurationDelegate:Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2023-06-21 11:16:56,840 INFO  [restartedMain] org.springframework.data.repository.config.RepositoryConfigurationDelegate:Finished Spring Data repository scanning in 35 ms. Found 7 JPA repository interfaces.
-2023-06-21 11:16:57,233 INFO  [restartedMain] org.springframework.boot.web.embedded.tomcat.TomcatWebServer:Tomcat initialized with port(s): 8080 (http)
-2023-06-21 11:16:57,239 INFO  [restartedMain] org.apache.catalina.core.StandardService:Starting service [Tomcat]
-2023-06-21 11:16:57,240 INFO  [restartedMain] org.apache.catalina.core.StandardEngine:Starting Servlet engine: [Apache Tomcat/9.0.71]
-2023-06-21 11:16:57,280 INFO  [restartedMain] org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/]:Initializing Spring embedded WebApplicationContext
-2023-06-21 11:16:57,280 INFO  [restartedMain] org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext:Root WebApplicationContext: initialization completed in 1021 ms
-2023-06-21 11:16:57,443 INFO  [restartedMain] org.hibernate.jpa.internal.util.LogHelper:HHH000204: Processing PersistenceUnitInfo [name: default]
-2023-06-21 11:16:57,478 INFO  [restartedMain] org.hibernate.Version:HHH000412: Hibernate ORM core version 5.6.14.Final
-2023-06-21 11:16:57,573 INFO  [restartedMain] org.hibernate.annotations.common.Version:HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
-2023-06-21 11:16:57,623 INFO  [restartedMain] com.zaxxer.hikari.HikariDataSource:HikariPool-1 - Starting...
-2023-06-21 11:16:57,737 INFO  [restartedMain] com.zaxxer.hikari.HikariDataSource:HikariPool-1 - Start completed.
-2023-06-21 11:16:57,748 INFO  [restartedMain] org.hibernate.dialect.Dialect:HHH000400: Using dialect: org.hibernate.dialect.PostgreSQLDialect
-2023-06-21 11:16:58,285 INFO  [restartedMain] org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator:HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
-2023-06-21 11:16:58,289 INFO  [restartedMain] org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean:Initialized JPA EntityManagerFactory for persistence unit 'default'
-2023-06-21 11:16:58,915 INFO  [restartedMain] org.springframework.security.web.DefaultSecurityFilterChain:Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@10b2d304, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@bf84c1d, org.springframework.security.web.context.SecurityContextPersistenceFilter@4b0e3dfc, org.springframework.security.web.header.HeaderWriterFilter@54eb3007, org.springframework.security.web.authentication.logout.LogoutFilter@481c3240, com.lib.security.jwt.AuthTokenFilter@58081fce, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@8ea6e76, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@2ad52c24, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@507f574f, org.springframework.security.web.session.SessionManagementFilter@17313fd2, org.springframework.security.web.access.ExceptionTranslationFilter@1a3d3402, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@25f7d4c3]
-2023-06-21 11:16:58,944 WARN  [restartedMain] org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration:spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2023-06-21 11:16:59,355 INFO  [restartedMain] org.springframework.boot.devtools.autoconfigure.OptionalLiveReloadServer:LiveReload server is running on port 35729
-2023-06-21 11:16:59,359 INFO  [restartedMain] org.springframework.boot.actuate.endpoint.web.EndpointLinksResolver:Exposing 15 endpoint(s) beneath base path '/actuator'
-2023-06-21 11:16:59,410 INFO  [restartedMain] org.springframework.boot.web.embedded.tomcat.TomcatWebServer:Tomcat started on port(s): 8080 (http) with context path ''
-2023-06-21 11:16:59,425 INFO  [restartedMain] com.lib.LibgenApplication:Started LibgenApplication in 3.466 seconds (JVM running for 4.028)
-2023-06-21 11:16:59,678 INFO  [RMI TCP Connection(2)-192.168.1.112] org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/]:Initializing Spring DispatcherServlet 'dispatcherServlet'
-2023-06-21 11:17:04,023 WARN  [http-nio-8080-exec-2] org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver:Resolved [org.springframework.web.bind.MissingServletRequestParameterException: Required request parameter 'author' for method parameter type Long is not present]
-2023-06-21 11:17:39,939 WARN  [http-nio-8080-exec-3] org.hibernate.hql.internal.ast.QueryTranslatorImpl:HHH000104: firstResult/maxResults specified with collection fetch; applying in memory!
-2023-06-21 11:17:40,003 ERROR [http-nio-8080-exec-3] com.lib.exception.LibraryExceptionHandling:Type definition error: [simple type, class org.hibernate.proxy.pojo.bytebuddy.ByteBuddyInterceptor]; nested exception is com.fasterxml.jackson.databind.exc.InvalidDefinitionException: No serializer found for class org.hibernate.proxy.pojo.bytebuddy.ByteBuddyInterceptor and no properties discovered to create BeanSerializer (to avoid exception, disable SerializationFeature.FAIL_ON_EMPTY_BEANS) (through reference chain: org.springframework.data.domain.PageImpl["content"]->java.util.Collections$UnmodifiableRandomAccessList[0]->com.lib.dto.BookDTO["category"]->com.lib.domain.Category$HibernateProxy$OLqgfTme["hibernateLazyInitializer"])
-2023-06-21 11:17:40,007 WARN  [http-nio-8080-exec-3] org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver:Resolved [org.springframework.http.converter.HttpMessageConversionException: Type definition error: [simple type, class org.hibernate.proxy.pojo.bytebuddy.ByteBuddyInterceptor]; nested exception is com.fasterxml.jackson.databind.exc.InvalidDefinitionException: No serializer found for class org.hibernate.proxy.pojo.bytebuddy.ByteBuddyInterceptor and no properties discovered to create BeanSerializer (to avoid exception, disable SerializationFeature.FAIL_ON_EMPTY_BEANS) (through reference chain: org.springframework.data.domain.PageImpl["content"]->java.util.Collections$UnmodifiableRandomAccessList[0]->com.lib.dto.BookDTO["category"]->com.lib.domain.Category$HibernateProxy$OLqgfTme["hibernateLazyInitializer"])]
-2023-06-21 11:18:13,377 INFO  [SpringApplicationShutdownHook] org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean:Closing JPA EntityManagerFactory for persistence unit 'default'
-2023-06-21 11:18:13,381 INFO  [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource:HikariPool-1 - Shutdown initiated...
-2023-06-21 11:18:13,383 INFO  [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource:HikariPool-1 - Shutdown completed.
-2023-06-21 11:18:16,840 INFO  [restartedMain] com.lib.LibgenApplication:Starting LibgenApplication using Java 18 on apples-MBP with PID 5070 (/Users/apple/IdeaProjects/Libgen/target/classes started by apple in /Users/apple/IdeaProjects/Libgen)
-2023-06-21 11:18:16,845 INFO  [restartedMain] com.lib.LibgenApplication:No active profile set, falling back to 1 default profile: "default"
-2023-06-21 11:18:16,882 INFO  [restartedMain] org.springframework.boot.devtools.env.DevToolsPropertyDefaultsPostProcessor:Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
-2023-06-21 11:18:16,882 INFO  [restartedMain] org.springframework.boot.devtools.env.DevToolsPropertyDefaultsPostProcessor:For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
-2023-06-21 11:18:17,447 INFO  [restartedMain] org.springframework.data.repository.config.RepositoryConfigurationDelegate:Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2023-06-21 11:18:17,494 INFO  [restartedMain] org.springframework.data.repository.config.RepositoryConfigurationDelegate:Finished Spring Data repository scanning in 42 ms. Found 7 JPA repository interfaces.
-2023-06-21 11:18:17,888 INFO  [restartedMain] org.springframework.boot.web.embedded.tomcat.TomcatWebServer:Tomcat initialized with port(s): 8080 (http)
-2023-06-21 11:18:17,894 INFO  [restartedMain] org.apache.catalina.core.StandardService:Starting service [Tomcat]
-2023-06-21 11:18:17,894 INFO  [restartedMain] org.apache.catalina.core.StandardEngine:Starting Servlet engine: [Apache Tomcat/9.0.71]
-2023-06-21 11:18:17,929 INFO  [restartedMain] org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/]:Initializing Spring embedded WebApplicationContext
-2023-06-21 11:18:17,929 INFO  [restartedMain] org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext:Root WebApplicationContext: initialization completed in 1047 ms
-2023-06-21 11:18:18,094 INFO  [restartedMain] org.hibernate.jpa.internal.util.LogHelper:HHH000204: Processing PersistenceUnitInfo [name: default]
-2023-06-21 11:18:18,125 INFO  [restartedMain] org.hibernate.Version:HHH000412: Hibernate ORM core version 5.6.14.Final
-2023-06-21 11:18:18,217 INFO  [restartedMain] org.hibernate.annotations.common.Version:HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
-2023-06-21 11:18:18,267 INFO  [restartedMain] com.zaxxer.hikari.HikariDataSource:HikariPool-1 - Starting...
-2023-06-21 11:18:18,365 INFO  [restartedMain] com.zaxxer.hikari.HikariDataSource:HikariPool-1 - Start completed.
-2023-06-21 11:18:18,375 INFO  [restartedMain] org.hibernate.dialect.Dialect:HHH000400: Using dialect: org.hibernate.dialect.PostgreSQLDialect
-2023-06-21 11:18:18,918 INFO  [restartedMain] org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator:HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
-2023-06-21 11:18:18,923 INFO  [restartedMain] org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean:Initialized JPA EntityManagerFactory for persistence unit 'default'
-2023-06-21 11:18:19,551 INFO  [restartedMain] org.springframework.security.web.DefaultSecurityFilterChain:Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@38b42e4c, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@66d764a0, org.springframework.security.web.context.SecurityContextPersistenceFilter@39f45bb4, org.springframework.security.web.header.HeaderWriterFilter@2a949b19, org.springframework.security.web.authentication.logout.LogoutFilter@141611a4, com.lib.security.jwt.AuthTokenFilter@5b2759de, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@1854869c, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@77f00c0, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@642d495a, org.springframework.security.web.session.SessionManagementFilter@bdb9b32, org.springframework.security.web.access.ExceptionTranslationFilter@430c23bc, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@33bda00a]
-2023-06-21 11:18:19,582 WARN  [restartedMain] org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration:spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2023-06-21 11:18:19,992 INFO  [restartedMain] org.springframework.boot.devtools.autoconfigure.OptionalLiveReloadServer:LiveReload server is running on port 35729
-2023-06-21 11:18:19,997 INFO  [restartedMain] org.springframework.boot.actuate.endpoint.web.EndpointLinksResolver:Exposing 15 endpoint(s) beneath base path '/actuator'
-2023-06-21 11:18:20,047 INFO  [restartedMain] org.springframework.boot.web.embedded.tomcat.TomcatWebServer:Tomcat started on port(s): 8080 (http) with context path ''
-2023-06-21 11:18:20,063 INFO  [restartedMain] com.lib.LibgenApplication:Started LibgenApplication in 3.586 seconds (JVM running for 4.34)
-2023-06-21 11:18:20,332 INFO  [RMI TCP Connection(1)-192.168.1.112] org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/]:Initializing Spring DispatcherServlet 'dispatcherServlet'
-2023-06-21 11:18:28,632 WARN  [http-nio-8080-exec-1] org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver:Resolved [org.springframework.web.bind.MissingServletRequestParameterException: Required request parameter 'author' for method parameter type Long is not present]
-2023-06-21 11:18:53,433 INFO  [SpringApplicationShutdownHook] org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean:Closing JPA EntityManagerFactory for persistence unit 'default'
-2023-06-21 11:18:53,437 INFO  [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource:HikariPool-1 - Shutdown initiated...
-2023-06-21 11:18:53,439 INFO  [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource:HikariPool-1 - Shutdown completed.
+2023-06-23 13:28:51,769 INFO  [restartedMain] com.lib.LibgenApplication:Starting LibgenApplication using Java 18 on apples-MacBook-Pro.local with PID 75067 (/Users/apple/IdeaProjects/Libgen/target/classes started by apple in /Users/apple/IdeaProjects/Libgen)
+2023-06-23 13:28:51,772 INFO  [restartedMain] com.lib.LibgenApplication:No active profile set, falling back to 1 default profile: "default"
+2023-06-23 13:28:51,805 INFO  [restartedMain] org.springframework.boot.devtools.env.DevToolsPropertyDefaultsPostProcessor:Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2023-06-23 13:28:51,805 INFO  [restartedMain] org.springframework.boot.devtools.env.DevToolsPropertyDefaultsPostProcessor:For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2023-06-23 13:28:52,360 INFO  [restartedMain] org.springframework.data.repository.config.RepositoryConfigurationDelegate:Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-06-23 13:28:52,401 INFO  [restartedMain] org.springframework.data.repository.config.RepositoryConfigurationDelegate:Finished Spring Data repository scanning in 37 ms. Found 8 JPA repository interfaces.
+2023-06-23 13:28:52,807 INFO  [restartedMain] org.springframework.boot.web.embedded.tomcat.TomcatWebServer:Tomcat initialized with port(s): 8080 (http)
+2023-06-23 13:28:52,813 INFO  [restartedMain] org.apache.catalina.core.StandardService:Starting service [Tomcat]
+2023-06-23 13:28:52,814 INFO  [restartedMain] org.apache.catalina.core.StandardEngine:Starting Servlet engine: [Apache Tomcat/9.0.71]
+2023-06-23 13:28:52,850 INFO  [restartedMain] org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/]:Initializing Spring embedded WebApplicationContext
+2023-06-23 13:28:52,851 INFO  [restartedMain] org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext:Root WebApplicationContext: initialization completed in 1045 ms
+2023-06-23 13:28:53,022 INFO  [restartedMain] org.hibernate.jpa.internal.util.LogHelper:HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-06-23 13:28:53,056 INFO  [restartedMain] org.hibernate.Version:HHH000412: Hibernate ORM core version 5.6.14.Final
+2023-06-23 13:28:53,154 INFO  [restartedMain] org.hibernate.annotations.common.Version:HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2023-06-23 13:28:53,208 INFO  [restartedMain] com.zaxxer.hikari.HikariDataSource:HikariPool-1 - Starting...
+2023-06-23 13:28:53,335 INFO  [restartedMain] com.zaxxer.hikari.HikariDataSource:HikariPool-1 - Start completed.
+2023-06-23 13:28:53,347 INFO  [restartedMain] org.hibernate.dialect.Dialect:HHH000400: Using dialect: org.hibernate.dialect.PostgreSQLDialect
+2023-06-23 13:28:53,931 INFO  [restartedMain] org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator:HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-06-23 13:28:53,936 INFO  [restartedMain] org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean:Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-06-23 13:28:54,445 WARN  [restartedMain] org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext:Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'bookController' defined in file [/Users/apple/IdeaProjects/Libgen/target/classes/com/lib/controller/BookController.class]: Unsatisfied dependency expressed through constructor parameter 0; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'bookService' defined in file [/Users/apple/IdeaProjects/Libgen/target/classes/com/lib/service/BookService.class]: Unsatisfied dependency expressed through constructor parameter 6; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'loanService' defined in file [/Users/apple/IdeaProjects/Libgen/target/classes/com/lib/service/LoanService.class]: Unsatisfied dependency expressed through constructor parameter 3; nested exception is org.springframework.beans.factory.BeanCurrentlyInCreationException: Error creating bean with name 'bookService': Requested bean is currently in creation: Is there an unresolvable circular reference?
+2023-06-23 13:28:54,446 INFO  [restartedMain] org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean:Closing JPA EntityManagerFactory for persistence unit 'default'
+2023-06-23 13:28:54,448 INFO  [restartedMain] com.zaxxer.hikari.HikariDataSource:HikariPool-1 - Shutdown initiated...
+2023-06-23 13:28:54,450 INFO  [restartedMain] com.zaxxer.hikari.HikariDataSource:HikariPool-1 - Shutdown completed.
+2023-06-23 13:28:54,452 INFO  [restartedMain] org.apache.catalina.core.StandardService:Stopping service [Tomcat]
+2023-06-23 13:28:54,466 INFO  [restartedMain] org.springframework.boot.autoconfigure.logging.ConditionEvaluationReportLoggingListener:
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2023-06-23 13:28:54,481 ERROR [restartedMain] org.springframework.boot.diagnostics.LoggingFailureAnalysisReporter:
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+The dependencies of some of the beans in the application context form a cycle:
+
+   bookController defined in file [/Users/apple/IdeaProjects/Libgen/target/classes/com/lib/controller/BookController.class]
+┌─────┐
+|  bookService defined in file [/Users/apple/IdeaProjects/Libgen/target/classes/com/lib/service/BookService.class]
+↑     ↓
+|  loanService defined in file [/Users/apple/IdeaProjects/Libgen/target/classes/com/lib/service/LoanService.class]
+└─────┘
+
+
+Action:
+
+Relying upon circular references is discouraged and they are prohibited by default. Update your application to remove the dependency cycle between beans. As a last resort, it may be possible to break the cycle automatically by setting spring.main.allow-circular-references to true.
+
+2023-06-23 13:32:35,278 INFO  [restartedMain] com.lib.LibgenApplication:Starting LibgenApplication using Java 18 on apples-MacBook-Pro.local with PID 75392 (/Users/apple/IdeaProjects/Libgen/target/classes started by apple in /Users/apple/IdeaProjects/Libgen)
+2023-06-23 13:32:35,279 INFO  [restartedMain] com.lib.LibgenApplication:No active profile set, falling back to 1 default profile: "default"
+2023-06-23 13:32:35,317 INFO  [restartedMain] org.springframework.boot.devtools.env.DevToolsPropertyDefaultsPostProcessor:Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2023-06-23 13:32:35,317 INFO  [restartedMain] org.springframework.boot.devtools.env.DevToolsPropertyDefaultsPostProcessor:For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2023-06-23 13:32:35,945 INFO  [restartedMain] org.springframework.data.repository.config.RepositoryConfigurationDelegate:Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-06-23 13:32:35,988 INFO  [restartedMain] org.springframework.data.repository.config.RepositoryConfigurationDelegate:Finished Spring Data repository scanning in 38 ms. Found 8 JPA repository interfaces.
+2023-06-23 13:32:36,390 INFO  [restartedMain] org.springframework.boot.web.embedded.tomcat.TomcatWebServer:Tomcat initialized with port(s): 8080 (http)
+2023-06-23 13:32:36,396 INFO  [restartedMain] org.apache.catalina.core.StandardService:Starting service [Tomcat]
+2023-06-23 13:32:36,396 INFO  [restartedMain] org.apache.catalina.core.StandardEngine:Starting Servlet engine: [Apache Tomcat/9.0.71]
+2023-06-23 13:32:36,435 INFO  [restartedMain] org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/]:Initializing Spring embedded WebApplicationContext
+2023-06-23 13:32:36,435 INFO  [restartedMain] org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext:Root WebApplicationContext: initialization completed in 1117 ms
+2023-06-23 13:32:36,613 INFO  [restartedMain] org.hibernate.jpa.internal.util.LogHelper:HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-06-23 13:32:36,642 INFO  [restartedMain] org.hibernate.Version:HHH000412: Hibernate ORM core version 5.6.14.Final
+2023-06-23 13:32:36,737 INFO  [restartedMain] org.hibernate.annotations.common.Version:HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2023-06-23 13:32:36,788 INFO  [restartedMain] com.zaxxer.hikari.HikariDataSource:HikariPool-1 - Starting...
+2023-06-23 13:32:36,885 INFO  [restartedMain] com.zaxxer.hikari.HikariDataSource:HikariPool-1 - Start completed.
+2023-06-23 13:32:36,896 INFO  [restartedMain] org.hibernate.dialect.Dialect:HHH000400: Using dialect: org.hibernate.dialect.PostgreSQLDialect
+2023-06-23 13:32:37,454 INFO  [restartedMain] org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator:HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-06-23 13:32:37,459 INFO  [restartedMain] org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean:Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-06-23 13:32:37,977 WARN  [restartedMain] org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext:Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'bookController' defined in file [/Users/apple/IdeaProjects/Libgen/target/classes/com/lib/controller/BookController.class]: Unsatisfied dependency expressed through constructor parameter 0; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'bookService' defined in file [/Users/apple/IdeaProjects/Libgen/target/classes/com/lib/service/BookService.class]: Unsatisfied dependency expressed through constructor parameter 6; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'loanService' defined in file [/Users/apple/IdeaProjects/Libgen/target/classes/com/lib/service/LoanService.class]: Unsatisfied dependency expressed through constructor parameter 3; nested exception is org.springframework.beans.factory.BeanCurrentlyInCreationException: Error creating bean with name 'bookService': Requested bean is currently in creation: Is there an unresolvable circular reference?
+2023-06-23 13:32:37,978 INFO  [restartedMain] org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean:Closing JPA EntityManagerFactory for persistence unit 'default'
+2023-06-23 13:32:37,980 INFO  [restartedMain] com.zaxxer.hikari.HikariDataSource:HikariPool-1 - Shutdown initiated...
+2023-06-23 13:32:37,982 INFO  [restartedMain] com.zaxxer.hikari.HikariDataSource:HikariPool-1 - Shutdown completed.
+2023-06-23 13:32:37,984 INFO  [restartedMain] org.apache.catalina.core.StandardService:Stopping service [Tomcat]
+2023-06-23 13:32:37,997 INFO  [restartedMain] org.springframework.boot.autoconfigure.logging.ConditionEvaluationReportLoggingListener:
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2023-06-23 13:32:38,009 ERROR [restartedMain] org.springframework.boot.diagnostics.LoggingFailureAnalysisReporter:
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+The dependencies of some of the beans in the application context form a cycle:
+
+   bookController defined in file [/Users/apple/IdeaProjects/Libgen/target/classes/com/lib/controller/BookController.class]
+┌─────┐
+|  bookService defined in file [/Users/apple/IdeaProjects/Libgen/target/classes/com/lib/service/BookService.class]
+↑     ↓
+|  loanService defined in file [/Users/apple/IdeaProjects/Libgen/target/classes/com/lib/service/LoanService.class]
+└─────┘
+
+
+Action:
+
+Relying upon circular references is discouraged and they are prohibited by default. Update your application to remove the dependency cycle between beans. As a last resort, it may be possible to break the cycle automatically by setting spring.main.allow-circular-references to true.
+
+2023-06-23 13:33:01,333 INFO  [restartedMain] com.lib.LibgenApplication:Starting LibgenApplication using Java 18 on apples-MacBook-Pro.local with PID 75438 (/Users/apple/IdeaProjects/Libgen/target/classes started by apple in /Users/apple/IdeaProjects/Libgen)
+2023-06-23 13:33:01,334 INFO  [restartedMain] com.lib.LibgenApplication:No active profile set, falling back to 1 default profile: "default"
+2023-06-23 13:33:01,385 INFO  [restartedMain] org.springframework.boot.devtools.env.DevToolsPropertyDefaultsPostProcessor:Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2023-06-23 13:33:01,385 INFO  [restartedMain] org.springframework.boot.devtools.env.DevToolsPropertyDefaultsPostProcessor:For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2023-06-23 13:33:02,022 INFO  [restartedMain] org.springframework.data.repository.config.RepositoryConfigurationDelegate:Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-06-23 13:33:02,064 INFO  [restartedMain] org.springframework.data.repository.config.RepositoryConfigurationDelegate:Finished Spring Data repository scanning in 38 ms. Found 8 JPA repository interfaces.
+2023-06-23 13:33:02,460 INFO  [restartedMain] org.springframework.boot.web.embedded.tomcat.TomcatWebServer:Tomcat initialized with port(s): 8080 (http)
+2023-06-23 13:33:02,466 INFO  [restartedMain] org.apache.catalina.core.StandardService:Starting service [Tomcat]
+2023-06-23 13:33:02,466 INFO  [restartedMain] org.apache.catalina.core.StandardEngine:Starting Servlet engine: [Apache Tomcat/9.0.71]
+2023-06-23 13:33:02,503 INFO  [restartedMain] org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/]:Initializing Spring embedded WebApplicationContext
+2023-06-23 13:33:02,503 INFO  [restartedMain] org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext:Root WebApplicationContext: initialization completed in 1117 ms
+2023-06-23 13:33:02,671 INFO  [restartedMain] org.hibernate.jpa.internal.util.LogHelper:HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-06-23 13:33:02,701 INFO  [restartedMain] org.hibernate.Version:HHH000412: Hibernate ORM core version 5.6.14.Final
+2023-06-23 13:33:02,799 INFO  [restartedMain] org.hibernate.annotations.common.Version:HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2023-06-23 13:33:02,850 INFO  [restartedMain] com.zaxxer.hikari.HikariDataSource:HikariPool-1 - Starting...
+2023-06-23 13:33:02,949 INFO  [restartedMain] com.zaxxer.hikari.HikariDataSource:HikariPool-1 - Start completed.
+2023-06-23 13:33:02,960 INFO  [restartedMain] org.hibernate.dialect.Dialect:HHH000400: Using dialect: org.hibernate.dialect.PostgreSQLDialect
+2023-06-23 13:33:03,552 INFO  [restartedMain] org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator:HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-06-23 13:33:03,557 INFO  [restartedMain] org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean:Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-06-23 13:33:04,235 INFO  [restartedMain] org.springframework.security.web.DefaultSecurityFilterChain:Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@3694dda9, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@5ad9bb74, org.springframework.security.web.context.SecurityContextPersistenceFilter@1e140b84, org.springframework.security.web.header.HeaderWriterFilter@3d3f6350, org.springframework.security.web.authentication.logout.LogoutFilter@c385eb4, com.lib.security.jwt.AuthTokenFilter@3ec540ba, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@1e3b6343, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@285c7237, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@42909b50, org.springframework.security.web.session.SessionManagementFilter@49154123, org.springframework.security.web.access.ExceptionTranslationFilter@67f76541, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@312ba15e]
+2023-06-23 13:33:04,265 WARN  [restartedMain] org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration:spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-06-23 13:33:04,695 INFO  [restartedMain] org.springframework.boot.devtools.autoconfigure.OptionalLiveReloadServer:LiveReload server is running on port 35729
+2023-06-23 13:33:04,699 INFO  [restartedMain] org.springframework.boot.actuate.endpoint.web.EndpointLinksResolver:Exposing 15 endpoint(s) beneath base path '/actuator'
+2023-06-23 13:33:04,753 INFO  [restartedMain] org.springframework.boot.web.embedded.tomcat.TomcatWebServer:Tomcat started on port(s): 8080 (http) with context path ''
+2023-06-23 13:33:04,767 INFO  [restartedMain] com.lib.LibgenApplication:Started LibgenApplication in 3.698 seconds (JVM running for 4.269)
+2023-06-23 13:33:05,093 INFO  [RMI TCP Connection(5)-127.0.0.1] org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/]:Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-06-23 13:33:09,459 INFO  [SpringApplicationShutdownHook] org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean:Closing JPA EntityManagerFactory for persistence unit 'default'
+2023-06-23 13:33:09,462 INFO  [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource:HikariPool-1 - Shutdown initiated...
+2023-06-23 13:33:09,463 INFO  [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource:HikariPool-1 - Shutdown completed.

@@ -16,8 +16,7 @@ import java.util.stream.Collectors;
 @Mapper(componentModel = "spring")
 public interface LoanMapper {
 
-    @Mapping(source="book.imageFile", target="book.imageFile", qualifiedByName = "getImageAsString")
-    @Mapping(source="user", target="userId", qualifiedByName = "getUserId")
+
     LoanDTO loanToLoanDTO(Loan loan);
     List<LoanDTO> map(List<Loan> loanList);
 

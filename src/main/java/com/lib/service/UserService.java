@@ -1,5 +1,6 @@
 package com.lib.service;
 
+import com.lib.domain.Loan;
 import com.lib.domain.Role;
 import com.lib.domain.User;
 import com.lib.domain.enums.RoleType;
@@ -13,6 +14,7 @@ import com.lib.exception.ConflictException;
 import com.lib.exception.ResourceNotFoundException;
 import com.lib.exception.message.ErrorMessage;
 import com.lib.mapper.UserMapper;
+import com.lib.repository.LoanRepository;
 import com.lib.repository.UserRepository;
 import com.lib.security.SecurityUtils;
 import org.springframework.context.annotation.Lazy;
@@ -34,13 +36,15 @@ public class UserService {
 
     private final RoleService roleService;
     private final UserMapper userMapper;
+    private final LoanRepository loanRepository;
 
     private final PasswordEncoder passwordEncoder;
 
-    public UserService(UserRepository userRepository, RoleService roleService, UserMapper userMapper, @Lazy PasswordEncoder passwordEncoder) {
+    public UserService(UserRepository userRepository, RoleService roleService, UserMapper userMapper, LoanRepository loanRepository, @Lazy PasswordEncoder passwordEncoder) {
         this.userRepository = userRepository;
         this.roleService = roleService;
         this.userMapper = userMapper;
+        this.loanRepository = loanRepository;
         this.passwordEncoder = passwordEncoder;
     }
 
@@ -171,6 +175,23 @@ public class UserService {
         if (user.isBuiltIn()){
             throw new BadRequestException(ErrorMessage.NOT_PERMITTED_METHOD_MESSAGE);
         }
+        boolean existsByUser = loanRepository.existsByUser(user);
+        List<Loan> loanList = loanRepository.findAllByUserId(id);
+
+        if(existsByUser) {
+            int count = 0;
+            for (Loan w : loanList) {
+                if (w.getReturnDate() == null) {
+                    count++;
+                }
+            }
+
+            if (count > 0) {
+                throw new BadRequestException(ErrorMessage.NOT_PERMITTED_METHOD_MESSAGE);
+            }
+        }
+
+
         userRepository.deleteById(id);
 
     }
@@ -208,9 +229,15 @@ public class UserService {
     }
 
     public User getById(Long userId) {
-        User user= userRepository.findUserByIdd(userId).
+        User user= userRepository.findUserById(userId).
                 orElseThrow(() ->
                         new ResourceNotFoundException(String.format(ErrorMessage.RESOURCE_NOT_FOUND_EXCEPTION,userId)));
         return user;
     }
+
+
+    public void save(User user) {
+        userRepository.save(user);
+    }
+
 }

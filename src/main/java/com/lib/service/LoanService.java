@@ -5,7 +5,9 @@ import com.lib.domain.Loan;
 import com.lib.domain.User;
 import com.lib.dto.LoanDTO;
 import com.lib.dto.request.LoanCreateRequest;
+import com.lib.dto.request.UpdateLoanRequest;
 import com.lib.dto.response.LoanResponse;
+import com.lib.dto.response.LoanUpdateResponse;
 import com.lib.exception.BadRequestException;
 import com.lib.exception.ResourceNotFoundException;
 import com.lib.exception.message.ErrorMessage;
@@ -15,6 +17,7 @@ import com.lib.repository.LoanRepository;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.interceptor.TransactionAspectSupport;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -110,7 +113,7 @@ public class LoanService {
 
     public Page<LoanDTO> getAllLoanPageByUser(User user, Pageable pageable) {
 
-        Page<Loan> loans=loanRepository.findAllLoansByUserAndPage(user,pageable);
+        Page<Loan> loans=loanRepository.findAllLoansByUser(user,pageable);
         return loans.map(loan -> loanMapper.loanToLoanDTO(loan));
     }
 
@@ -127,7 +130,57 @@ public class LoanService {
     }
 
     public Page<LoanDTO> getAllLoanPageByBook(Book book, Pageable pageable) {
-        Page<Loan> loans=loanRepository.findAllLoansByBookPage(book,pageable);
+        Page<Loan> loans=loanRepository.findAllLoansByBook(book,pageable);
         return loans.map(loan -> loanMapper.loanToLoanDTO(loan));
+    }
+
+
+    public LoanUpdateResponse updateLoan(Long loanId, UpdateLoanRequest updateLoanRequest) {
+
+        Loan loan = loanRepository.findById(loanId).orElseThrow(()->
+                new ResourceNotFoundException(String.format(ErrorMessage.LOAN_NOT_FOUND_EXCEPTION, loanId)));
+
+        User user = loan.getUser();
+        Book book = loan.getBook();
+
+        try {
+            if(updateLoanRequest.getReturnDate()!=null){
+                book.setLoanable(true);
+                loan.setReturnDate(updateLoanRequest.getReturnDate());
+                bookService.save(book);
+                loanRepository.save(loan);
+                if(updateLoanRequest.getReturnDate().isEqual(loan.getReturnDate()) || updateLoanRequest.getReturnDate().isBefore(loan.getReturnDate())){
+                    user.setScore(user.getScore()+1);
+                    userService.save(user);
+                    return new LoanUpdateResponse(loan);
+                }else{
+                    user.setScore(user.getScore()-1);
+                    userService.save(user);
+                    return new LoanUpdateResponse(loan);
+                }
+            }else{
+                loan.setExpireDate(updateLoanRequest.getExpireDate());
+                loan.setNotes(updateLoanRequest.getNotes());
+                bookService.save(book);
+                userService.save(user);
+                loanRepository.save(loan);
+                return new LoanUpdateResponse(loan);
+            }
+        } catch (RuntimeException e) {
+            TransactionAspectSupport.currentTransactionStatus().setRollbackOnly();
+        } finally {
+            return new LoanUpdateResponse(loan);
+        }
+    }
+
+    private Loan getLoan(Long loanId) {
+        Loan loan=loanRepository.findLoanById(loanId).orElseThrow(()->
+                new ResourceNotFoundException(String.format(ErrorMessage.RESOURCE_NOT_FOUND_EXCEPTION,loanId)));
+        return loan;
+    }
+
+    public List<Loan> findByBookId(Long id) {
+        List<Loan> loans =  loanRepository.findByBookId(id);
+        return loans;
     }
 }

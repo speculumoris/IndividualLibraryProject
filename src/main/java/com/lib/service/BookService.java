@@ -2,7 +2,6 @@ package com.lib.service;
 
 import com.lib.domain.*;
 import com.lib.dto.BookDTO;
-import com.lib.dto.PublisherDTO;
 import com.lib.dto.request.BookUpdateRequest;
 import com.lib.dto.request.SaveBookRequest;
 import com.lib.exception.BadRequestException;
@@ -17,7 +16,6 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.List;
@@ -38,14 +36,17 @@ public class BookService {
 
     private final PublisherService publisherService;
 
+    private final LoanService loanService;
 
-    public BookService(BookMapper mapper, BookRepository bookRepository, ImageFileService imageFileService, AuthorService authorService,@Lazy CategoryService categoryService, @Lazy PublisherService publisherService) {
+
+    public BookService(BookMapper mapper, BookRepository bookRepository, ImageFileService imageFileService, AuthorService authorService, @Lazy CategoryService categoryService, @Lazy PublisherService publisherService,@Lazy LoanService loanService) {
         this.bookMapper = mapper;
         this.bookRepository = bookRepository;
         this.imageFileService = imageFileService;
         this.authorService = authorService;
         this.categoryService = categoryService;
         this.publisherService = publisherService;
+        this.loanService = loanService;
     }
 
 
@@ -188,6 +189,14 @@ public class BookService {
         }
 
         //reservation için kontrol sağlanacak //!!!
+        List<Loan> loans =loanService.findByBookId(book.getId());
+        if(loans !=null){
+            for ( Loan w : loans ) {
+                if (w.getReturnDate() == null){
+                    throw new BadRequestException(ErrorMessage.NOT_DELETED_METHOD_MESSAGE);
+                }
+            }
+        }
 
         bookRepository.delete(book);
 

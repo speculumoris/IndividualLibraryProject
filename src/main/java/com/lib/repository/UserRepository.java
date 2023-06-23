@@ -1,8 +1,6 @@
 package com.lib.repository;
 
-import com.lib.domain.Role;
 import com.lib.domain.User;
-import com.lib.domain.enums.RoleType;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.EntityGraph;
@@ -44,7 +42,5 @@ public interface UserRepository extends JpaRepository<User, Long> {
                 @Param("email") String email,
                 @Param("resetPasswordCode") String resetPasswordCode);
 
-    @EntityGraph(attributePaths = "id")
-    Optional<User> findUserByIdd(Long userId);
 
 }

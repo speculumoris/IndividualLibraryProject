@@ -4,7 +4,9 @@ import com.lib.domain.Book;
 import com.lib.domain.User;
 import com.lib.dto.LoanDTO;
 import com.lib.dto.request.LoanCreateRequest;
+import com.lib.dto.request.UpdateLoanRequest;
 import com.lib.dto.response.LoanResponse;
+import com.lib.dto.response.LoanUpdateResponse;
 import com.lib.service.BookService;
 import com.lib.service.LoanService;
 import com.lib.service.UserService;
@@ -106,5 +108,14 @@ public class LoanController {
 
         return ResponseEntity.ok(loanDTOS);
 
+    }
+
+    @PutMapping("/loans/{id}")
+    @PreAuthorize("hasRole('ADMIN') or  hasRole('EMPLOYEE')")
+    public ResponseEntity<LoanUpdateResponse> updateLoan(@PathVariable(value = "id") Long loanId,
+                                                         @Valid @RequestBody UpdateLoanRequest updateLoanRequest) {
+
+        LoanUpdateResponse updatedLoanResponse = loanService.updateLoan(loanId, updateLoanRequest);
+        return new ResponseEntity<>(updatedLoanResponse, HttpStatus.OK);
     }
 }

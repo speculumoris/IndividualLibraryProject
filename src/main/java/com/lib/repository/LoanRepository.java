@@ -9,10 +9,10 @@ import org.springframework.data.jpa.repository.EntityGraph;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Optional;
 
 public interface LoanRepository extends JpaRepository<Loan,Long> {
     @Query("select l from Loan l where l.expireDate<:now and l.user.id=:id ")
@@ -23,7 +23,7 @@ public interface LoanRepository extends JpaRepository<Loan,Long> {
 
 
     @EntityGraph(attributePaths = {"book", "book.imageFile","user"})
-    Page<Loan> findAllLoansByUserAndPage(User user, Pageable pageable);
+    Page<Loan> findAllLoansByUser(User user, Pageable pageable);
 
     @EntityGraph(attributePaths = {"book","book.imageFile"})
     Page<Loan> findAll(Pageable pageable);
@@ -31,5 +31,11 @@ public interface LoanRepository extends JpaRepository<Loan,Long> {
     boolean existsByUser(User user);
 
     @EntityGraph(attributePaths = {"book","book.imageFile"})
-    Page<Loan> findAllLoansByBookPage(Book book, Pageable pageable);
+    Page<Loan> findAllLoansByBook(Book book, Pageable pageable);
+    @EntityGraph(attributePaths = {"book", "book.imageFile","user"})
+    Optional<Loan> findLoanById(Long loanId);
+
+    List<Loan> findByBookId(Long id);
+
+    List<Loan> findAllByUserId(Long id);
 }
